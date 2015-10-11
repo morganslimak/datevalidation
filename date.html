@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function validateDate() {
+  var d = new Date();
+  var month = (d.getMonth()+1).toString();
+  var year = d.getFullYear().toString().slice(2);
+  if (month.length === 1) month += "0";
+  var x = document.forms["exampleForm"]["date"].value;
+  var formMonth = x.slice(0,2);
+  var formYear = x.slice(2);
+  if ((formMonth < month && formYear == year) || formYear < year || formMonth > 12 || x == null || x == "" || isNaN(x) || x.length < 4) {
+      alert("That is not a valid 4 digit expiration date");
+      return false;
+    }
+}
+</script>
+</head>
+<body>
+
+<form name="exampleForm" action="success.html"
+onsubmit="return validateDate()" method="post">
+Please enter 4 digit Expiration Date: <input type="text" name="date" maxlength="4">
+<input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
